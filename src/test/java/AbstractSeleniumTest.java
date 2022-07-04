@@ -7,19 +7,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
-
+/**
+ * Abstract class which is used for all tests
+ * */
 public abstract class AbstractSeleniumTest {
     protected WebDriver webDriver;
 
     @Rule
     public final ErrorCollector collector = new ErrorCollector();
 
+    /**
+     * Initializes web-driver before each test
+     * */
     @Before
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
     }
 
+    /**
+     * Closes all tabs, browser and web driver after each test
+     * */
     @After
     public void tearDown() {
         webDriver.close();

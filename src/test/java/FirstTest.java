@@ -1,17 +1,23 @@
-import org.hamcrest.core.*;
 import org.junit.Test;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 
-import static java.util.Objects.isNull;
 import static org.hamcrest.core.Is.is;
 
+/**
+ * First test: one successful check
+ * */
 public class FirstTest extends AbstractSeleniumTest{
 
+    /**
+     * Successful check with word "Яндекс"
+     * */
     @Test
     public void success_search(){
         webDriver.get("https://yandex.ru/");
         String text = "Яндекс";
-        collector.checkThat(text, is(TextFinder.find(webDriver, text).getText()));
+        WebElement element = TextFinder.find(webDriver, text);
+        String res = element.getText();
+        collector.checkSucceeds(() -> TextFinder.find(webDriver, text));
     }
 
 

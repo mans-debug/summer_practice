@@ -30,7 +30,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <parallel>all</parallel>
+                    <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <testFailureIgnore>false</testFailureIgnore>
                     <argLine>
