@@ -9,7 +9,9 @@ import static org.hamcrest.core.Is.is;
 public class SecondTest extends AbstractSeleniumTest{
 
     /**
-     * unsuccessful check
+     * Переходим по ссылке
+     * Пытаемся найти "Продам гараж""
+     * Тест не должен пройти
      * */
     @Test(expected = NoSuchElementException.class)
     public void failure_search(){

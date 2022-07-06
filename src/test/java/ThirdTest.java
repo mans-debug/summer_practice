@@ -8,9 +8,13 @@ import static org.hamcrest.core.Is.is;
  */
 public class ThirdTest extends AbstractSeleniumTest {
     /**
-     * 4 unsuccessful 1 successful check
-     */
-    @Test
+     * Переходим по ссылке
+     * Пытаемся найти слова:
+     * "Куплю гараж", "Возьму в ипотеку под 1%", "Какой-то нелепый текст", "У меня кончилась фантазия"
+     * "Почта"
+     * В первых четырех должна вылететь ошибка, последний должен пройти
+     * */
+    @Test()
     public void four_failures_and_one_success(){
         webDriver.get("https://yandex.ru/");
         collector.checkSucceeds(() -> TextFinder.find(webDriver, "Куплю гараж"));

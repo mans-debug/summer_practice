@@ -31,7 +31,6 @@ public abstract class AbstractSeleniumTest {
      * */
     @After
     public void tearDown() {
-        webDriver.close();
         webDriver.quit();
     }
 }
