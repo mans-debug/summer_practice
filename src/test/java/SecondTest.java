@@ -9,7 +9,7 @@ import static org.hamcrest.core.Is.is;
 public class SecondTest extends AbstractSeleniumTest{
 
     /**
-     * Unsuccessful check with word "найти товар по фото"
+     * unsuccessful check
      * */
     @Test(expected = NoSuchElementException.class)
     public void failure_search(){

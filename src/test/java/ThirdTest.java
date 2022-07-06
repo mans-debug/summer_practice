@@ -8,54 +8,16 @@ import static org.hamcrest.core.Is.is;
  */
 public class ThirdTest extends AbstractSeleniumTest {
     /**
-     * Unsuccessful check with word "Куплю гараж"
-     */
-    @Test(expected = NoSuchElementException.class)
-    public void failure_search_1() {
-        webDriver.get("https://yandex.ru/");
-        String text = "Куплю гараж";
-        collector.checkSucceeds(() -> TextFinder.find(webDriver, text));
-
-    }
-
-    /**
-     * Unsuccessful check with word "Возьму в ипотеку под 1%"
-     */
-    @Test(expected = NoSuchElementException.class)
-    public void failure_search_2() {
-        webDriver.get("https://yandex.ru/");
-        String text = "Возьму в ипотеку под 1%";
-        collector.checkSucceeds(() -> TextFinder.find(webDriver, text));
-    }
-
-    /**
-     * Unsuccessful check with word "Какой-то нелепый текст"
-     */
-    @Test(expected = NoSuchElementException.class)
-    public void failure_search_3() {
-        webDriver.get("https://yandex.ru/");
-        String text = "Какой-то нелепый текст";
-        collector.checkSucceeds(() -> TextFinder.find(webDriver, text));
-    }
-
-    /**
-     * Unsuccessful check with word "У меня кончилась фантазия"
-     */
-    @Test(expected = NoSuchElementException.class)
-    public void failure_search_4() {
-        webDriver.get("https://yandex.ru/");
-        String text = "У меня кончилась фантазия";
-        collector.checkSucceeds(() -> TextFinder.find(webDriver, text));
-    }
-
-    /**
-     * Successful check with word "Браузер"
+     * 4 unsuccessful 1 successful check
      */
     @Test
-    public void success_search_1() {
+    public void four_failures_and_one_success(){
         webDriver.get("https://yandex.ru/");
-        String text = "Браузер";
-        collector.checkSucceeds(() -> TextFinder.find(webDriver, text));
+        collector.checkSucceeds(() -> TextFinder.find(webDriver, "Куплю гараж"));
+        collector.checkSucceeds(() -> TextFinder.find(webDriver, "Возьму в ипотеку под 1%"));
+        collector.checkSucceeds(() -> TextFinder.find(webDriver, "Какой-то нелепый текст"));
+        collector.checkSucceeds(() -> TextFinder.find(webDriver, "У меня кончилась фантазия"));
+        collector.checkSucceeds(() -> TextFinder.find(webDriver, "Почта"));
     }
 
 }

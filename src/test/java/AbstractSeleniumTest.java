@@ -5,6 +5,7 @@ import org.junit.Rule;
 import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 /**
@@ -21,8 +22,8 @@ public abstract class AbstractSeleniumTest {
      * */
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+        webDriver = new FirefoxDriver();
     }
 
     /**

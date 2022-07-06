@@ -9,7 +9,7 @@ import static org.hamcrest.core.Is.is;
 public class FirstTest extends AbstractSeleniumTest{
 
     /**
-     * Successful check with word "Яндекс"
+     * successful check
      * */
     @Test
     public void success_search(){
