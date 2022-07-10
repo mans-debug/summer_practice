@@ -14,7 +14,7 @@ public class ThirdTest extends AbstractSeleniumTest {
      * "Почта"
      * В первых четырех должна вылететь ошибка, последний должен пройти
      * */
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void four_failures_and_one_success(){
         webDriver.get("https://yandex.ru/");
         collector.checkSucceeds(() -> TextFinder.find(webDriver, "Куплю гараж"));

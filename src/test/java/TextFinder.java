@@ -11,6 +11,10 @@ public class TextFinder {
     /**
      * Выбрасывает NoSuchElementException если элемент не был найден*/
     public static WebElement find(WebDriver driver, String text) {
-        return driver.findElement(By.xpath(String.format("//*[text() = '%s']", text)));
+        try {
+            return driver.findElement(By.xpath(String.format("//*[text() = '%s']", text)));
+        } catch (NoSuchElementException e){
+            throw new NotFoundException(text);
+        }
     }
 }
