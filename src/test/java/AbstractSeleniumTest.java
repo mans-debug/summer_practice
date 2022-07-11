@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,10 +36,8 @@ public abstract class AbstractSeleniumTest {
      */
     @Before
     public void setUp() {
-        /*WebDriverManager.firefoxdriver().setup();
-        webDriver = new FirefoxDriver();*/
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+        webDriver = new FirefoxDriver();
     }
 
     /**
