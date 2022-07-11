@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Attachment;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -7,14 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,6 +49,7 @@ public abstract class AbstractSeleniumTest {
     public void tearDown() {
         webDriver.quit();
         logErrors();
+        injectLogsIntoAllure();
     }
 
     private void logErrors() {
@@ -72,6 +74,17 @@ public abstract class AbstractSeleniumTest {
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Attachment(value = "Test report", type = "text/plain")
+    public byte[] injectLogsIntoAllure() {
+
+        String logName = logsDirPath + "log-" + this.getClass().getName() + ".txt";
+        try {
+            return Files.readAllBytes(Paths.get(logName));
+        } catch (IOException e) {
+            return null;
         }
     }
 }
