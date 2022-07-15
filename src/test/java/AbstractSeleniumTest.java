@@ -1,5 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.junit.After;
 import org.junit.Before;
@@ -38,8 +37,8 @@ public abstract class AbstractSeleniumTest {
      */
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+        webDriver = new FirefoxDriver();
     }
 
     /**
