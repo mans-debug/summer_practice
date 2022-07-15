@@ -1,10 +1,12 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileNotFoundException;
@@ -36,8 +38,8 @@ public abstract class AbstractSeleniumTest {
      */
     @Before
     public void setUp() {
-        WebDriverManager.firefoxdriver().setup();
-        webDriver = new FirefoxDriver();
+        WebDriverManager.chromedriver().setup();
+        webDriver = new ChromeDriver();
     }
 
     /**
@@ -60,10 +62,11 @@ public abstract class AbstractSeleniumTest {
             if (collectedExceptions.isEmpty())
                 return;
 //            String currentTime = new SimpleDateFormat().format(LocalDateTime.now());
-            String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
             try (PrintWriter printWriter = new PrintWriter(logsDirPath +  logName)) {
                 for (Throwable collectedException : collectedExceptions) {
                     if (collectedException instanceof NotFoundException){
+                        String currentTime = ((NotFoundException) collectedException).getTimeThrown()
+                                .format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
                         printWriter.println(currentTime + "\t" + collectedException.getMessage());
                     }
                 }
