@@ -8,10 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -61,7 +60,7 @@ public abstract class AbstractSeleniumTest {
             if (collectedExceptions.isEmpty())
                 return;
 //            String currentTime = new SimpleDateFormat().format(LocalDateTime.now());
-            try (PrintWriter printWriter = new PrintWriter(logsDirPath +  logName)) {
+            try (PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(logsDirPath +  logName), StandardCharsets.UTF_16))) {
                 for (Throwable collectedException : collectedExceptions) {
                     if (collectedException instanceof NotFoundException){
                         String currentTime = ((NotFoundException) collectedException).getTimeThrown()
