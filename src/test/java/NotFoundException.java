@@ -5,7 +5,7 @@ public class NotFoundException extends RuntimeException{
     private String message;
     private LocalDateTime timeThrown;
     public NotFoundException(String phrase) {
-        message = String.format("[ERROR]-NotFoundException\tФраза '%s' не была найдена", phrase);
+        message = String.format("Фраза '%s' не была найдена", phrase);
         timeThrown = LocalDateTime.now();
     }
 
